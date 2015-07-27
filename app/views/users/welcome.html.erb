@@ -1,0 +1,82 @@
+<script>
+
+
+    // header.style.marginBottom = "100px";
+</script>
+<div class="top">
+    <div class="top-container">
+        <h1 class="h1 top-title">Start price tracking products in seconds.</h1>
+        <form method="get" action="/products">
+            <input type="text" placeholder="Search products" onfocus="this.placeholder = ''"  name="search">
+            <input type="submit" value="SEARCH">
+        </form>
+    </div>
+</div>
+<main class="main">
+    <p class="space-25"></p>
+    <h2 class="h2 center">Find products by category</h2>
+    <p class="space-50"></p>
+    <div id="category" class="category">
+        <div class="inner row collapse js-masonry" data-masonry-options='{
+            "itemSelector": ".list",
+            "transitionDuration": "0.1s"
+         }'>
+            <div class="list columns fl-l">
+                <a href="/products?search=women">
+                    <div class="inner">
+                        <h3>WOMEN</h3>
+                        <%= image_tag("tiles/women.jpg", class: "city") %>
+                    </div>
+                </a>
+            </div>
+            <div class="list columns fl-l">
+                <a href="/products?search=bags">
+                    <div class="inner">
+                        <h3>BAGS</h3>
+                        <%= image_tag("tiles/bags.jpg", size: "160x62", class: "city") %>
+                    </div>
+                </a>
+            </div>
+            <div class="list columns fl-l">
+                <a href="/products?search=shoes">
+                  <div class="inner">
+                    <h3>SHOES</h3>
+                   <%= image_tag("tiles/shoes.jpg", size: "160x62", class: "city") %>
+                 </div>
+                </a>
+            </div>
+            <div class="list columns fl-l ">
+                <a href="/products?search=beauty">
+                  <div class="inner">
+                    <h3>BEAUTY</h3>
+                     <%= image_tag("tiles/beauty.jpg", size: "160x62", class: "city") %>
+                  </div>
+                </a>
+            </div>
+            <div class="list columns fl-l">
+                <a href="/products?search=jewelry">
+                    <h3>JEWELRY</h3>
+                    <%= image_tag("tiles/jewerly.jpg", size: "160x62", class: "city") %>
+                </a>
+            </div>
+            <div class="list columns fl-l">
+                <a href="/products?search=men">
+                    <h3>MEN</h3>
+                     <%= image_tag("tiles/men.jpg", size: "160x62", class: "city") %>
+                </a>
+            </div>
+            <div class="list columns fl-l">
+                <a href="/products?search=kids">
+                    <h3>KIDS</h3>
+                    <%= image_tag("tiles/kids.jpg", size: "160x62", class: "city") %>
+                </a>
+            </div>
+            <div class="list columns fl-l">
+                <a href="/products?search=home">
+                    <h3>HOME</h3>
+                   <%= image_tag("tiles/home.jpg", size: "160x62", class: "city") %>
+                </a>
+            </div>
+        </div>
+    </div>
+</main>

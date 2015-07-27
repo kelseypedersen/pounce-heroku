@@ -1,0 +1,73 @@
+<!-- This is the page the user will see after clicking on a specific product. Product will contain information about the particular product. -->
+<main class="main">
+<div class="left fl-l">
+	<img src="<%= @product['image']['sizes']['XLarge']['url'] %>" alt="">
+	<!-- <img src="http://www.shoebuy.com/pi/rieke/jb/rieke617173_303937_jb.jpg" alt=""> -->
+</div>
+
+
+<div class="right fl-l">
+	<div class="inner cl-b">
+		<a href="#popup3">
+			<div class="add-box fl-l">
+				<p class="add-image">&#9733;</p>
+				<p class="add-text">Add</p>
+			</div>
+		</a>
+		<a href="<%= @product['clickUrl'] %>" target="_blank">
+			<div class="add-box fl-l">
+				<p class="add-image">&#9733;</p>
+				<p class="add-text">Visit web site</p>
+			</div>
+		</a>
+		<div class="box-description cl-b">
+			<h1 class="h2"><%= @product["unbrandedName"] %></h1>
+			<p><h4 class="h4"><%= @product['brand']['name'] %></h4></p>
+			<p><%= @product["description"].html_safe %> </p>
+			<p class="p-price"><%= @product["priceLabel"] %></p>
+		</div>
+	</div>
+</div>
+
+	<div id="popup3" class="overlay">
+    <div class="popup">
+    	<div class="popup-form">
+        <div class="popup-header">
+            <h2 class="h2">Track this item</h2>
+            <a class="close" href="#">&times;</a>
+        </div>
+
+
+        <div class="content">
+        		<%= form_for :wants, method: "POST", url: user_wants_path(current_user) do %>
+              <p><%= label_tag(:max_price, "Max price", :class => "label") %></p>
+              <p><%= text_field(:wants, :max_price) %></p>
+              <p><%= label_tag(:expiration, "Expiration", :class => "label") %></p>
+              <p><%= date_field(:wants,:expiration) %></p>
+              <input type="hidden" name="shopstyle_id" value="<%= @product["id"] %>">
+              <input type="hidden" name="image_url" value="<%= @product['image']['sizes']['XLarge']['url'] %>">
+              <input type="hidden" name="title" value="<%= @product["unbrandedName"] %>">
+              <input type="hidden"  name="description" value="<%= @product["description"] %>">
+              <input type="hidden"  name="current_price" value="<%= @product["price"] %>">
+            	<p><input type="submit" value="Submit"></p>
+          <% end %>
+
+        <!--     <form action="/users/<%= current_user.id %>/wants" method="Post" class="form-popup">
+            	<p><label for="max_price">max_price</label></p>
+              <p><input type="text" name="max_price"></p>
+            	<p><label for="expiration">Expiration</label></p>
+              <p><input type="date" name="expiration"></p>
+              <input type="hidden" name="shopstyle_id" value="<%= @product["id"] %>">
+              <input type="hidden" name="title" value="<%= @product["unbrandedName"] %>">
+              <input type="hidden"  name="description" value="<%= @product["description"] %>">
+              <input type="hidden"  name="current_price" value="<%= @product["price"] %>">
+            	<p><input type="submit" value="Submit"></p>
+            </form>  -->
+        </div>
+
+
+      </div>
+    </div>
+	</div>
+
+</main>

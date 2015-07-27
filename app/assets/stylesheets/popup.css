@@ -1,0 +1,104 @@
+
+.button {
+	text-decoration:none;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+
+
+.overlay {
+  position: absolute;
+  height:100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /*transition: opacity 500ms;*/
+  background:(0,0,0,0.7);
+  visibility: hidden;
+  opacity: 0;
+}
+
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  heigth:300px;
+  padding: 20px 40px;
+  background: #fff;
+  box-shadow:2px 2px 2px 2px #E0E0E0;
+  border-radius: 5px;
+  width: 30%;
+  min-width:320px;
+  max-width:420px;
+  position: relative;
+  /*transition: all 5s ease-in-out;*/
+  z-index:10;
+}
+
+.popup-form {
+
+}
+
+.popup-form input[type="text"],.popup-form input[type="password"] , .popup-form input[type="date"]{
+  height:30px;
+  width:250px;
+  padding:4px 12px;
+  /*border-radius:2px;*/
+  transition: border 0.5s ease;
+}
+
+.popup-form input[type="text"]:focus,
+.popup-form input[type="password"]:focus, {
+  border:1px solid #0288D1;
+}
+
+.popup-form input[type="submit"]{
+  font-weight:300;
+  margin-top:10px;
+  height:50px;
+  padding:10px 25px;
+  color:white;
+  transition: background-color 0.5s ease;
+  background-color:#0288D1;
+  letter-spacing: 1px;
+}
+
+.popup-form input[type="submit"]:hover{
+  background-color:#039BE5;
+}
+
+.popup-header {
+  width:100%;
+  display:inline-box;
+  margin-bottom:10px;
+  padding:0px 0px 5px 0px;
+  line-height:20px;
+  border-bottom:1px solid #EEEEEE;
+}
+
+.popup .close {
+  position: absolute;
+  top: 40px;
+  right: 30px;
+  transition: all 2ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+/*  color: #333;*/
+}
+.popup .close:hover {
+  color: orange;
+}
+.popup .content {
+  overflow: auto;
+}
+
+.form-popup {
+  height:100%;
+}
+
+

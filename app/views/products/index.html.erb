@@ -1,0 +1,21 @@
+<!-- This is where the user will end up after searching for a particular items. Products is an array of product objects -->
+<main class="main">
+	<span><span class="h2"><%= @products.count %></span> search results for <span class="h2"><%= params[:search] %></span></span>
+
+	<div id="masonry" >
+		<% @products.each do |product| %>
+		<a href="/products/<%= product["id"] %>">
+			<div class="card fl-l item">
+				<div class="card-img">
+					<img src="<%= product['image']['sizes']['XLarge']['url'] %>" >
+				</div>
+				<div class="card-content">
+					<p class="p-name"><%= product["name"] %></p>
+					<p class="p-price"><%= product["priceLabel"] %></p>
+				</div>
+			</div>
+		<!-- <p><%= product %></p> -->
+		</a>
+		<% end %>
+	</div>
+</main>

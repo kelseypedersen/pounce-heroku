@@ -1,0 +1,29 @@
+<!-- This is where we will show a list of user wants. The user object will be passed back. You will also have access to their list of fulfilled and unfulfilled wants as arrays.-->
+<main class="main">
+	<div class="small-search-box fl-r">
+		<form method="get" action="/products">
+		  <input type="text" placeholder="Search products" onfocus="this.placeholder = ''"  name="search">
+		  <input type="submit" value="SEARCH">
+		</form>
+	</div>
+	<div class="fl-l">
+		<span>You have <span class="h2"><%= @unfulfilled_wants.count %></span> wants items</span>
+	</div>
+
+	<div id="masonry" class="cl-b" >
+		<% @unfulfilled_wants.each do |product| %>
+		<a href="/products/<%= product["shopstyle_id"] %>">
+			<div class="card fl-l item">
+				<div class="card-img">
+					<img src="<%= product['image_url'] %>" >
+				</div>
+				<div class="card-content">
+					<p class="p-name"><%= product["title"] %></p>
+					<p class="p-price">$<%= product["current_price"] %></p>
+				</div>
+			</div>
+		<!-- <p><%= product %></p> -->
+		</a>
+		<% end %>
+	</div>
+</main>

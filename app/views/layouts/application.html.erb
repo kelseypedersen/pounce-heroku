@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pounce</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.1/masonry.pkgd.min.js"></script>
+  <script src="http://imagesloaded.desandro.com/imagesloaded.pkgd.min.js"></script>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<header class="header">
+    <div class="inner">
+  		<div class="logo fl-l"><a href="/"><%= image_tag("Pounce-logo.png", size: "160x62") %></a></div>
+  		<nav class="nav fl-r">
+  			<ul class="">
+        <% if current_user %>
+
+          <li><a class="button" href="/users/<%= current_user.id %>/wants">Profile</a></li>
+          <li><a class="button" href="/logout">Logout</a></li>
+
+        <% else %>
+
+          <li class="signin"><a class="button" href="#popup1">Signin</a></li>
+          <li class="signup"><a class="button" href="#popup2">Signup</a></li>
+
+        <% end %>
+  			</ul>
+  		</nav>
+    </div>
+	</header>
+	<div id="popup1" class="overlay">
+    <div class="popup">
+    	<div class="popup-form">
+        <div class="popup-header">
+            <h2 class="h2">Signin</h2>
+            <a class="close" href="#">&times;</a>
+        </div>
+        <div class="content">
+            <%= form_tag({controller: "sessions", action: "create"}, method: "POST") do %>
+              <p><%= label_tag(:email, "Email", :class => "label") %></p>
+              <p><%= text_field(:users, :email) %></p>
+              <p><%= label :password, "Password", :class => "label" %></p>
+              <p><%= password_field(:users,:password) %></p>
+              <p><input type="submit" value="Signin"></p>
+            <% end %>
+        </div>
+      </div>
+    </div>
+	</div>
+	<div id="popup2" class="overlay">
+    <div class="popup">
+    	<div class="popup-form">
+        <div class="popup-header">
+            <h2 class="h2">Signup</h2>
+            <a class="close" href="#">&times;</a>
+        </div>
+        <div class="content">
+            <%= form_tag({controller: "sessions", action: "create"}, method: "POST") do %>
+            	<p><%= label_tag(:email, "Email", :class => "label") %></p>
+              <p><%= text_field(:users, :email) %></p>
+              <p><%= label :phonenumber, "Phone number", :class => "label" %></p>
+              <p><%= text_field(:users, :phonenumber) %></p>
+              <p><%= label :password, "Password", :class => "label" %></p>
+              <p><%= password_field(:users,:password) %></p>
+              <p><input type="submit" value="Signin"></p>
+            <% end %>
+        </div>
+      </div>
+    </div>
+	</div>
+
+		<%= yield %>
+
+	<footer class="footer cl-b">
+
+	</footer>
+</body>
+</html>

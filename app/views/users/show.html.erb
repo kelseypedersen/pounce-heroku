@@ -1,0 +1,34 @@
+<!-- These objects are accessible in this view, user has all user information and user_wants is an array of products that the user has placed on their wants list -->
+<main class="main">
+  <div class="small-search-box fl-r">
+		<form method="get" action="/products">
+		  <input type="text" placeholder="Search products" onfocus="this.placeholder = ''"  name="search">
+		  <input type="submit" value="SEARCH">
+		</form>
+	</div>
+	<div class="fl-l">
+		<span><span class="h2"><%= @user_wants.count %> </span>search results for "something"</span>
+	</div>
+
+	<div class="js-masonry cl-f"  data-masonry-options='{
+	        "itemSelector": ".item",
+	        "transitionDuration": "0.1s"
+	     }'>
+		<% @user_wants.each do |product| %>
+		<a href="/products/<%= product["id"] %>">
+			<div class="card fl-l item">
+				<div class="card-img">
+					<img src="<%= product['image']['sizes']['XLarge']['url'] %>" >
+				</div>
+				<div class="card-content">
+					<p class="p-name"><%= product["name"] %></p>
+					<p class="p-price"><%= product["priceLabel"] %></p>
+				</div>
+			</div>
+		<!-- <p><%= product %></p> -->
+		</a>
+		<% end %>
+	</div>
+</main>
+<p> <%= @user %> </p>
+<p> <%= @user_wants %> </p>
